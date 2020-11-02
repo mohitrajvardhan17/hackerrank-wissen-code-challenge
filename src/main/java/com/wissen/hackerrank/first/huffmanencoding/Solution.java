@@ -28,7 +28,6 @@ package com.wissen.hackerrank.first.huffmanencoding;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 
 abstract class Node implements Comparable<Node> {
     public int frequency;
