@@ -84,17 +84,7 @@ import java.util.stream.IntStream;
 public class Solution {
 
     // Complete the countSort function below.
-    static void countSort(List<List<String>> result) {
-        Map<Integer, StringBuffer> output = new TreeMap<>();
-        for(List<String> rec : result) {
-            int index = Integer.parseInt(rec.get(0));
-            String data = rec.get(1);
-            StringBuffer val = output.putIfAbsent(index, new StringBuffer().append(data).append(" "));
-            if(val != null) {
-                output.put(index, output.get(index).append(data).append(" "));
-            }
-        }
-
+    static void countSort(Map<Integer, StringBuffer> output) {
         for(Map.Entry<Integer, StringBuffer> val : output.entrySet()) {
             System.out.print(val.getValue());
         }
@@ -105,23 +95,24 @@ public class Solution {
 
         int n = Integer.parseInt(bufferedReader.readLine().trim());
         int mid = (n >> 1);
-        List<List<String>> arr = new ArrayList<>();
 
-
+        Map<Integer, StringBuffer> output = new TreeMap<>();
         IntStream.range(0, n).forEach(i -> {
             try {
                 String input[] = bufferedReader.readLine().split(" ");
                 if (i < mid) {
                     input[1] = "-";
                 }
-                arr.add(Arrays.asList(input));
+                int index = Integer.parseInt(input[0]);
+                String data = input[1];
+                StringBuffer val = output.putIfAbsent(index, new StringBuffer().append(data).append(" "));
+                if(val != null) {
+                    output.put(index, output.get(index).append(data).append(" "));
+                }
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
-
-        countSort(arr);
-
-        bufferedReader.close();
+        countSort(output);
     }
 }
