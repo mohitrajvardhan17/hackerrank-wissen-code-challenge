@@ -19,7 +19,7 @@ Explanation
 
 The longest string that can be formed by deleting zero or more characters from  and  is , whose length is 2.
  */
-package com.wissen.hackerrank.second.commonchild;
+package com.wissen.hackerrank.second.commonchild.recursion;
 
 import java.util.stream.Collectors;
 
